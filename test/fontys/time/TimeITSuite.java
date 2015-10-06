@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
  * @author chielsprangers
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({fontys.time.TimeIT.class, fontys.time.ITimeSpanIT.class, fontys.time.DayInWeekIT.class, fontys.time.TimeSpanIT.class, fontys.time.ITimeIT.class})
+@Suite.SuiteClasses({fontys.time.TimeTest.class, fontys.time.ITimeSpanIT.class, fontys.time.DayInWeekIT.class, fontys.time.TimeSpanTest.class, fontys.time.ITimeIT.class})
 public class TimeITSuite {
 
     @BeforeClass

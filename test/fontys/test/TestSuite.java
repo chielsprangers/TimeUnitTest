@@ -10,8 +10,8 @@ import org.junit.runner.Result;
 import org.junit.runner.RunWith;
 import org.junit.runner.notification.Failure;
 import org.junit.runners.Suite;
-import fontys.time.TimeIT;
-import fontys.time.TimeSpan2IT;
+import fontys.time.TimeTest;
+import fontys.time.TimeSpan2Test;
 
 /**
  *
@@ -19,8 +19,8 @@ import fontys.time.TimeSpan2IT;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    TimeIT.class,
-    TimeSpan2IT.class})
+    TimeTest.class,
+    TimeSpan2Test.class})
 public class TestSuite {
 
     public static void main(String[] args) {

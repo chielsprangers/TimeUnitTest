@@ -27,7 +27,7 @@ public class TimeSpan implements ITimeSpan {
      * @param et 
      */
     public TimeSpan(ITime bt, ITime et) {
-        if (bt.compareTo(et) >= 1) {
+        if (bt.compareTo(et) <= 0 ) {
             throw new IllegalArgumentException("begin time "
                     + bt + " must be earlier than end time " + et);
         }
@@ -53,7 +53,7 @@ public class TimeSpan implements ITimeSpan {
 
     @Override
     public void setBeginTime(ITime beginTime) {
-        if (beginTime.compareTo(et) >= 0) {
+        if (beginTime.compareTo(et) <= 0) {
             throw new IllegalArgumentException("begin time "
                     + bt + " must be earlier than end time " + et);
         }
@@ -63,7 +63,7 @@ public class TimeSpan implements ITimeSpan {
 
     @Override
     public void setEndTime(ITime endTime) {
-        if (endTime.compareTo(bt) <= 0) {
+        if (endTime.compareTo(bt) >= 0) {
             throw new IllegalArgumentException("end time "
                     + et + " must be later then begin time " + bt);
         }
@@ -74,7 +74,7 @@ public class TimeSpan implements ITimeSpan {
     @Override
     public void move(int minutes) {
         bt = bt.plus(minutes);
-        et = bt.plus(minutes);
+        et = et.plus(minutes);
     }
 
     @Override
@@ -94,7 +94,7 @@ public class TimeSpan implements ITimeSpan {
 
     @Override
     public ITimeSpan unionWith(ITimeSpan timeSpan) {
-        if (bt.compareTo(timeSpan.getEndTime()) > 0 || et.compareTo(timeSpan.getBeginTime()) < 0) {
+        if (bt.compareTo(timeSpan.getEndTime()) < 0 || et.compareTo(timeSpan.getBeginTime()) > 0) {
             return null;
         }
         
@@ -131,7 +131,7 @@ public class TimeSpan implements ITimeSpan {
             endtime = timeSpan.getEndTime();
         }
 
-        if (begintime.compareTo(endtime) >= 0) {
+        if (begintime.compareTo(endtime) <= 0) {
             return null;
         }
 

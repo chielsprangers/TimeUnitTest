@@ -8,14 +8,14 @@ import static org.junit.Assert.*;
  * IMPORTANT
  * @author Chiel Sprangers
  */
-public class TimeSpan2IT {
+public class TimeSpan2Test {
 
     Time testTime1 = new Time(2015, 9, 27, 19, 20);
     Time testTime2 = new Time(2014, 8, 27, 19, 20);
     TimeSpan2 tsTest = new TimeSpan2(testTime2, testTime1.difference(testTime2));
     
 
-    public TimeSpan2IT() {
+    public TimeSpan2Test() {
         try {
             TimeSpan2 tsTestBeginTime = new TimeSpan2(testTime1, testTime2.difference(testTime1));
             

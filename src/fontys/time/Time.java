@@ -64,10 +64,8 @@ public class Time implements ITime {
                 return DayInWeek.THU;
             case GregorianCalendar.FRIDAY:
                 return DayInWeek.FRI;
-            case GregorianCalendar.SATURDAY:
-                return DayInWeek.SAT;
             default:
-                return null;
+                return DayInWeek.SAT;
         }
     }
 
