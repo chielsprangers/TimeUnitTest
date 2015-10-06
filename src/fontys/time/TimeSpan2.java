@@ -1,17 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package fontys.time;
 
 /**
- *
- * @author Frank Peeters, Nico Kuijpers
- * 
- * LET OP: De klasse TimeSpan bevat enkele fouten.
- * 
+ * @author Chiel Sprangers
  */
-public class TimeSpan implements ITimeSpan {
+public class TimeSpan2 implements ITimeSpan {
 
     /* class invariant: 
      * A stretch of time with a begin time and end time.
@@ -26,8 +18,13 @@ public class TimeSpan implements ITimeSpan {
      * @param bt must be earlier than et
      * @param et 
      */
-    public TimeSpan(ITime bt, ITime et) {
-        if (bt.compareTo(et) >= 1) {
+    public TimeSpan2(ITime bt, long duration) {
+        ITime et = bt.plus(Integer.valueOf(String.valueOf(duration)));
+        
+        System.out.println( bt.getHours() + " "+bt.getMinutes());
+        System.out.println(et.getHours() + " "+et.getMinutes());
+        
+        if (bt.compareTo(et) <= 0) {
             throw new IllegalArgumentException("begin time "
                     + bt + " must be earlier than end time " + et);
         }
@@ -53,7 +50,7 @@ public class TimeSpan implements ITimeSpan {
 
     @Override
     public void setBeginTime(ITime beginTime) {
-        if (beginTime.compareTo(et) >= 0) {
+        if (beginTime.compareTo(et) <= 0) {
             throw new IllegalArgumentException("begin time "
                     + bt + " must be earlier than end time " + et);
         }
@@ -63,7 +60,7 @@ public class TimeSpan implements ITimeSpan {
 
     @Override
     public void setEndTime(ITime endTime) {
-        if (endTime.compareTo(bt) <= 0) {
+        if (endTime.compareTo(bt) >= 0) {
             throw new IllegalArgumentException("end time "
                     + et + " must be later then begin time " + bt);
         }
@@ -94,10 +91,13 @@ public class TimeSpan implements ITimeSpan {
 
     @Override
     public ITimeSpan unionWith(ITimeSpan timeSpan) {
-        if (bt.compareTo(timeSpan.getEndTime()) > 0 || et.compareTo(timeSpan.getBeginTime()) < 0) {
+        //als begintijd groter is dan eindtijd, of als eindtijd kleiner is dan begintijd
+        int i = bt.compareTo(timeSpan.getEndTime());
+        if (bt.compareTo(timeSpan.getEndTime()) < 0 || et.compareTo(timeSpan.getBeginTime()) > 0) {
             return null;
         }
         
+        //als oude begintijd kleiner is dan nieuwe begintijd dan word de nieuwe begin tijd
         ITime begintime, endtime;
         if (bt.compareTo(timeSpan.getBeginTime()) < 0) {
             begintime = bt;
@@ -111,7 +111,7 @@ public class TimeSpan implements ITimeSpan {
             endtime = timeSpan.getEndTime();
         }
 
-        return new TimeSpan(begintime, endtime);
+        return new TimeSpan2(begintime, endtime.difference(begintime));
 
     }
 
@@ -119,6 +119,7 @@ public class TimeSpan implements ITimeSpan {
     public ITimeSpan intersectionWith(ITimeSpan timeSpan) {
 
         ITime begintime, endtime;
+        int i = bt.compareTo(timeSpan.getBeginTime());
         if (bt.compareTo(timeSpan.getBeginTime()) > 0) {
             begintime = bt;
         } else {
@@ -130,11 +131,11 @@ public class TimeSpan implements ITimeSpan {
         } else {
             endtime = timeSpan.getEndTime();
         }
-
-        if (begintime.compareTo(endtime) >= 0) {
+       
+        if (begintime.compareTo(endtime) <= 0) {
             return null;
         }
 
-        return new TimeSpan(begintime, endtime);
+        return new TimeSpan2(begintime, endtime.difference(begintime));
     }
 }

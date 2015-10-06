@@ -142,7 +142,7 @@ public class TimeIT {
         assertEquals(expResult, result);
         
         time = new Time(2015, 9, 22, 12, 2);
-        expResult = -60000;
+        expResult = -1;
         result = instance.difference(time);
         assertEquals(expResult, result);
     }
