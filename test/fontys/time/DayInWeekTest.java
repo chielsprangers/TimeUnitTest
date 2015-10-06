@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author chielsprangers
  */
-public class DayInWeekIT {
+public class DayInWeekTest {
     
-    public DayInWeekIT() {
+    public DayInWeekTest() {
     }
     
     @BeforeClass
@@ -43,11 +43,9 @@ public class DayInWeekIT {
     @Test
     public void testValues() {
         System.out.println("values");
-        DayInWeek[] expResult = null;
+        DayInWeek[] expResult = {DayInWeek.SUN,DayInWeek.MON, DayInWeek.TUE, DayInWeek.WED, DayInWeek.THU, DayInWeek.FRI, DayInWeek.SAT};
         DayInWeek[] result = DayInWeek.values();
         assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -56,12 +54,10 @@ public class DayInWeekIT {
     @Test
     public void testValueOf() {
         System.out.println("valueOf");
-        String name = "";
-        DayInWeek expResult = null;
+        String name = "MON";
+        DayInWeek expResult = DayInWeek.MON;
         DayInWeek result = DayInWeek.valueOf(name);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
