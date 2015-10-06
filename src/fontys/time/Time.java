@@ -37,11 +37,11 @@ public class Time implements ITime {
         if (h < 0 || h > 23) {
             throw new IllegalArgumentException("hours must be within 0..23");
         }
-        if (min < 0 || min > 59) { // was m, typefout moet min zijn.
+        if (min < 0 || min > 59) { //FOUT was m, typefout moet min zijn.
             throw new IllegalArgumentException("minutes must be within 0..59");
         }
         
-        gc = new GregorianCalendar(y, m , d, h, min);
+        gc = new GregorianCalendar(y, m - 1 , d, h, min);//FOUT m was zonder -1, omdat de Gregorian calender de maanden begint bij 0 moet dit gedaan worden.
     }
 
     Time(Time t) {
@@ -112,6 +112,6 @@ public class Time implements ITime {
     @Override
     public int difference(ITime time) {
         Time t = (Time) time;
-        return (int) ((this.gc.getTimeInMillis() - t.gc.getTimeInMillis()) / 600000);
+        return (int) ((this.gc.getTimeInMillis() - t.gc.getTimeInMillis()) );/// 600000 FOUT hier stond delen door 600000 waardoor het antwoord niet correct was
     }
 }
