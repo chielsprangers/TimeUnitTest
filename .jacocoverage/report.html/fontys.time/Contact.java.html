@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Contact.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;UnittestenTime&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">fontys.time</a> &gt; <span class="el_source">Contact.java</span></div><h1>Contact.java</h1><pre class="source lang-java linenums">package fontys.time;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+//  Specificeren is gedaan door de class author.
+//  Implementatie is gedaan door methods author.
+
+/**
+ * Contact class. 
+ * @author Kevin Berendsen
+ */
+public class Contact {
+    /**
+     * Naam van de contact
+     */
+    private String name;
+    
+    /**
+     * Een lijst met Appointment die dient als agenda.
+     */
+    private List&lt;Appointment&gt; appointments;
+    
+    
+    
+    /**
+     * Maak een nieuwe contact aan met de naam als constructor.
+     * Constructor moet ook een nieuw lijst met Appointment aanmaken.
+     * @param name van de contact. Mag niet null of leeg zijn, 
+     * anders IllegalArgumentException
+     * @author Danny ter Haar
+     */
+<span class="fc" id="L34">    public Contact(String name) {</span>
+<span class="fc bfc" id="L35" title="All 4 branches covered.">        if (name == null || name.equals(&quot;&quot;)){</span>
+<span class="fc" id="L36">            throw new IllegalArgumentException(&quot;Cannot be empty&quot;);</span>
+        }
+<span class="fc" id="L38">        this.name = name;</span>
+<span class="fc" id="L39">        appointments = new ArrayList&lt;Appointment&gt;();</span>
+<span class="fc" id="L40">    }</span>
+    
+    /**
+     * Verkrijg de naam de Contact-object.
+     * @return naam van de contact.
+     * @author Danny ter Haar
+     */
+    public String getName() {
+        //TODO Opdracht 10
+<span class="fc" id="L49">        return name;</span>
+    }
+    
+    /**
+     * Toevoegen van een nieuwe Appointment. De nieuwe appointment mag niet
+     * overlappen met een andere afspraak. Begin moet ook eerlijk zijn dan
+     * de eind tijd van de appointment.
+     * @param a appointment die moet worden toegevoegd aan de lijst van
+     * appointments.
+     * @return true als het toevoegen van een nieuwe Appointment is gelukt en 
+     * false als het niet lukte.
+     * @author Danny ter Haar
+     */
+    boolean addAppointment(Appointment a) {
+<span class="fc" id="L63">        Iterator&lt;Appointment&gt; as = this.appointments();</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        while(as.hasNext()) {</span>
+<span class="fc" id="L65">            Appointment t = as.next();</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">            if(t.equals(a))</span>
+<span class="fc" id="L67">                return false;</span>
+            
+<span class="fc" id="L69">            ITimeSpan time = t.getTimeSpan();</span>
+<span class="fc" id="L70">            ITimeSpan duration = a.getTimeSpan();</span>
+            
+            // Tijd valt eruit met andere tijd erin.
+<span class="fc bfc" id="L73" title="All 2 branches covered.">            if(duration.getBeginTime().difference(time.getBeginTime()) &lt;= 0</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">                &amp;&amp; duration.getEndTime().difference(time.getEndTime()) &gt;= 0)</span>
+<span class="fc" id="L75">                return false;</span>
+            
+            // Eind tijd valt erin
+<span class="fc bfc" id="L78" title="All 2 branches covered.">            if(duration.getEndTime().difference(time.getBeginTime()) &gt; 0</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">                &amp;&amp; duration.getEndTime().difference(time.getEndTime()) &lt; 0)</span>
+<span class="fc" id="L80">                return false;</span>
+            
+            // Begin tijd valt erin.
+<span class="fc bfc" id="L83" title="All 2 branches covered.">            if(duration.getBeginTime().difference(time.getBeginTime()) &gt;= 0</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">                &amp;&amp; duration.getBeginTime().difference(time.getEndTime()) &lt; 0)</span>
+<span class="fc" id="L85">                return false;</span>
+            
+<span class="fc" id="L87">        }</span>
+        
+<span class="fc" id="L89">        appointments.add(a);</span>
+<span class="fc" id="L90">        return true;</span>
+    }
+    
+    /**
+     * Het verwijderen van een appointment. Als de appointment bestaat, moet
+     * die verwijderd worden uit de lijst appointments en anders gebeurd er
+     * helemaal niks.
+     * @param a appointment die verwijderd moet worden.
+     * @author Danny ter Haar
+     */
+    void removeAppointment(Appointment a) {
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        if(a == null)</span>
+<span class="fc" id="L102">            throw new IllegalArgumentException(&quot;a mag niet null zijn.&quot;);</span>
+<span class="fc" id="L103">        appointments.remove(a);</span>
+<span class="fc" id="L104">    }</span>
+    
+    /**
+     * Verkrijg alle Appointments doormiddel van een iterator
+     * zodat ze er alleen door heen kunnen kijken.
+     * @return Iterator met alle appointments.
+     * @author Danny ter Haar
+     */
+    public Iterator&lt;Appointment&gt; appointments() {
+        //TODO Opdracht 10
+<span class="fc" id="L114">        return appointments.iterator();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
