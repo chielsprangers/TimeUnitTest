@@ -4,12 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/chielsprangers/Documents/School/Fontys/S33+ICS31/GSO3/UnittestenTime/TimeUnitTest/test/fontys/time/TimeSpanIT.java</file>
-            <file>file:/Users/chielsprangers/Documents/School/Fontys/S33+ICS31/GSO3/UnittestenTime/TimeUnitTest/src/fontys/time/ITime.java</file>
+            <file>file:/Users/chielsprangers/Documents/School/Fontys/S33+ICS31/GSO3/UnittestenTime/TimeUnitTest/test/fontys/test/TestSuite.java</file>
             <file>file:/Users/chielsprangers/Documents/School/Fontys/S33+ICS31/GSO3/UnittestenTime/TimeUnitTest/test/fontys/time/ITimeIT.java</file>
-            <file>file:/Users/chielsprangers/Documents/School/Fontys/S33+ICS31/GSO3/UnittestenTime/TimeUnitTest/src/fontys/time/Time.java</file>
             <file>file:/Users/chielsprangers/Documents/School/Fontys/S33+ICS31/GSO3/UnittestenTime/TimeUnitTest/test/fontys/time/TimeITSuite.java</file>
             <file>file:/Users/chielsprangers/Documents/School/Fontys/S33+ICS31/GSO3/UnittestenTime/TimeUnitTest/test/fontys/time/TimeIT.java</file>
-            <file>file:/Users/chielsprangers/Documents/School/Fontys/S33+ICS31/GSO3/UnittestenTime/TimeUnitTest/src/fontys/time/TimeSpan.java</file>
             <file>file:/Users/chielsprangers/Documents/School/Fontys/S33+ICS31/GSO3/UnittestenTime/TimeUnitTest/test/fontys/time/ITimeSpanIT.java</file>
         </group>
     </open-files>

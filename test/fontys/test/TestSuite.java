@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runner.notification.Failure;
 import org.junit.runners.Suite;
 import fontys.time.TimeIT;
+import fontys.time.TimeSpan2IT;
 
 /**
  *
@@ -18,7 +19,8 @@ import fontys.time.TimeIT;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    TimeIT.class})
+    TimeIT.class,
+    TimeSpan2IT.class})
 public class TestSuite {
 
     public static void main(String[] args) {

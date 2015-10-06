@@ -21,9 +21,6 @@ public class TimeSpan2 implements ITimeSpan {
     public TimeSpan2(ITime bt, long duration) {
         ITime et = bt.plus(Integer.valueOf(String.valueOf(duration)));
         
-        System.out.println( bt.getHours() + " "+bt.getMinutes());
-        System.out.println(et.getHours() + " "+et.getMinutes());
-        
         if (bt.compareTo(et) <= 0) {
             throw new IllegalArgumentException("begin time "
                     + bt + " must be earlier than end time " + et);
